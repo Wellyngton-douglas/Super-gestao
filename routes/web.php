@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UnidadeController;
+use App\Http\Controllers\ProdutoDetalheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,13 +56,18 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::post('/produto/adicionar', [ProdutoController::class, 'adicionar']) -> name('app.produto.adicionar');
 
   Route::get('/produto/listar', [ProdutoController::class, 'listar']) -> name('app.produto.listar');
+  
+  Route::get('/produto/editar/{id}/{msg?}', [ProdutoController::class, 'editar']) -> name('app.produto.editar');
+  Route::get('/produto/excluir/{id}', [ProdutoController::class, 'excluir']) -> name('app.produto.excluir');
+
+  Route::get('/produto/detalhe/listar/{id}', [ProdutoDetalheController::class, 'listar']) -> name('app.produto_detalhe');
 
   Route::get('/produto/unidade/listar', [UnidadeController::class, 'listar']) -> name('app.unidade.listar');
   
   Route::get('/produto/unidade/adicionar', [UnidadeController::class, 'adicionar']) -> name('app.unidade.adicionar');
   Route::post('/produto/unidade/adicionar', [UnidadeController::class, 'adicionar']) -> name('app.unidade.adicionar');
 
-  Route::get('/produto/unidade/listar/{id}/{msg?}', [UnidadeController::class, 'editar']) -> name('app.unidade.editar');
+  Route::get('/produto/unidade/editar/{id}/{msg?}', [UnidadeController::class, 'editar']) -> name('app.unidade.editar');
   Route::get('/produto/unidade/excluir{id}', [UnidadeController::class, 'excluir']) -> name('app.unidade.excluir');
 });
 

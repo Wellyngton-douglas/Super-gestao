@@ -23,35 +23,32 @@
 					<thead>
 						<tr>
 							<th>Nome Produto</th>
-							<th>Descrição</th>
+							<th>Comprimento</th>
 							{{-- <th>Peso</th> --}}
-							<th>Preço venda</th>
-							<th>Estoque mínimo</th>
-							<th>Estoque máximo</th>
+							<th>Largura</th>
+							<th>Altura</th>
+							<th>Peso</th>
 							{{-- <th>Unidade</th> --}}
 						</tr>
 					</thead>
 					<tbody>
 						@foreach ($produtos as $produto)						
 							<tr>
-								<td>{{ $produto -> nome}}</td>
-								<td>{{ $produto -> descricao}}</td>
+                <td>{{ $produto -> nome}}</td>
+								<td>{{ $produto -> comprimento}}</td>
+								<td>{{ $produto -> largura}}</td>
 								{{-- <td>{{ $produto -> peso}}</td> --}}
-								<td>{{ $produto -> preco_venda}}</td>
-								<td>{{ $produto -> estoque_minimo}} Uni.</td>
-								<td>{{ $produto -> estoque_maximo}} Uni.</td>
+								<td>{{ $produto -> altura}}</td>
+								<td>{{ $produto -> peso}}</td>
+								{{-- <td>{{ $produto -> estoque_maximo}} Uni.</td> --}}
 								{{-- <td>{{ $produto -> unidade}}</td> --}}
-								<td><a href="{{ route('app.produto_detalhe', $produto -> id) }}">Detalhes</a></td>
+								{{-- <td><a href="{{ route('app.produto_detalhe', $produto -> id) }}">Detalhes</a></td>
 								<td><a href="{{ route('app.produto.excluir', $produto -> id) }}">Excluir</a></td>
-								<td><a href="{{ route('app.produto.editar', $produto -> id) }}">Editar</a></td>
+								<td><a href="{{ route('app.produto.editar', $produto -> id) }}">Editar</a></td> --}}
 							</tr>
 						@endforeach
 					</tbody>
 				</table>
-				<div class="pagination justify-content-center">
-					{{-- {{ $produto -> appends($request) -> links() }} --}}
-					{{ $produtos -> links() }}
-				</div>
 			</div>
 		</div>
 	</div>

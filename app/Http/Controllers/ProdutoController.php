@@ -15,17 +15,12 @@ class ProdutoController extends Controller
 
 	public function listar() {
 		$produto = DB::table('produtos')
-			-> select('produtos.*',
-								'unidades.unidade',
-								'unidades.descricao as desc_unidade')
-			-> join('unidades', 'produtos.unidade_id', '=', 'unidades.id')
-			-> orderBy('produtos.id')
+			-> orderBy('id')
 			-> paginate(1);
 		return view('app.produto.listar', ['titulo' => 'Produtos', 'produtos' => $produto]);
 	}
 
 	public function adicionar(Request $request) {
-		$unidade = Unidade::all();
 		$msg = '';
 		if ($request -> input('_token') != '' && $request -> input('id') == '') {
 			$regras = [
@@ -46,7 +41,34 @@ class ProdutoController extends Controller
 			$valor = $request -> input('preco_venda');
 			Produto::create($request -> all());
 			$msg = 'Produto cadastrado corretamente';
+		} elseif ($request -> input('_token') != '' && $request -> input('id') != '') {
+				$produto = Produto::find($request -> input('id'));
+				$update = $produto -> update($request -> all());
+				if ($update) {
+					$msg = 'Atualização realizado com sucesso';
+				} else {
+						$msg = 'Atualização apresentou problema';
+				}
+
+				return redirect() -> route('app.produto.editar', ['id' => $request -> input('id'), 'msg' => $msg]);
+				
 		}
-		return view('app.produto.adicionar', ['titulo' => 'adicionar', 'unidades' => $unidade, 'msg' => $msg]);
+		return view('app.produto.adicionar', ['titulo' => 'adicionar', 'msg' => $msg]);
+	}
+
+	public function editar($id, $msg = '') {
+		$produto = Produto::find($id);
+		$unidade = Unidade::all();
+		return view('app.produto.adicionar', ['titulo' => 'Editar', 'unidades' => $unidade, 'produto' => $produto, 'msg' => $msg]);
+	}
+
+	public function excluir($id) {
+		$delete = Produto::find($id) -> delete();
+		$produto = DB::table('produtos')
+			-> orderBy('id')
+			-> paginate(1);
+		session()->flash('msg', 'registro excluido com sucesso');
+
+		return redirect() -> route('app.produto.listar', ['titulo' => 'Produtos', 'produtos' => $produto]);
 	}
 }
