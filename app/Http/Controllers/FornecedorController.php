@@ -16,24 +16,14 @@ class FornecedorController extends Controller
 
 	public function listar(Request $request) {
 		$estados = Estado::all();
-		// if ($request -> input('nome') == '' &&
-		// 	  $request -> input('site') == '' &&
-		// 		$request -> input('estados_id') == '' &&
-		// 		$request -> input('email') == '') {
-
-		// 	return view('app.fornecedor.index', ['titulo' => 'Fornecedor',
-		// 																			 'estados' => $estados,
-		// 																			 'erro' => 'Algum dos campos precisam ser informados']);
-		// } else {
-				$fornecedores = Fornecedor::join('estados', 'estados.id', '=', 'fornecedores.estados_id')
-					-> where('nome', 'like', '%'.$request -> input('nome').'%')
-					-> where('site', 'like', '%'.$request -> input('site').'%')
-					-> where('estados_id', 'like', '%'.$request -> input('estado_id').'%')
-					-> where('email', 'like', '%'.$request -> input('email').'%')
-					-> select('fornecedores.*', 'estados.uf')
-					-> paginate(1);
-				return view('app.fornecedor.listar', ['titulo' => 'Listar', 'fornecedores' => $fornecedores, 'request' => $request -> all()]);
-		//}
+		$fornecedores = Fornecedor::join('estados', 'estados.id', '=', 'fornecedores.estados_id')
+			-> where('nome', 'like', '%'.$request -> input('nome').'%')
+			-> where('site', 'like', '%'.$request -> input('site').'%')
+			-> where('estados_id', 'like', '%'.$request -> input('estado_id').'%')
+			-> where('email', 'like', '%'.$request -> input('email').'%')
+			-> select('fornecedores.*', 'estados.uf')
+			-> paginate(1);
+		return view('app.fornecedor.listar', ['titulo' => 'Listar', 'fornecedores' => $fornecedores, 'request' => $request -> all()]);
 	}
 	
 	public function adicionar(Request $request) {
