@@ -14,13 +14,15 @@ class ProdutoController extends Controller
 
 	public function listar() {
 		$produto = DB::table('produtos')
-			-> orderBy('id')
+			-> join('fornecedores', 'fornecedores.id', '=', 'produtos.fornecedor_id' )
+			-> select('produtos.*', 'fornecedores.nome as nome_fornecedor', 'fornecedores.id as fornecedor_id')
 			-> paginate(1);
 		return view('app.produto.listar', ['titulo' => 'Produtos', 'produtos' => $produto]);
 	}
 
 	public function adicionar(Request $request) {
 		$msg = '';
+		$fornecedor = DB::table('fornecedores') -> get();
 		if ($request -> input('_token') != '' && $request -> input('id') == '') {
 			$regras = [
 				'nome' => 'required|min:3|max:100|unique:produtos',
@@ -50,12 +52,13 @@ class ProdutoController extends Controller
 				return redirect() -> route('app.produto.editar', ['id' => $request -> input('id'), 'msg' => $msg]);
 				
 		}
-		return view('app.produto.adicionar', ['titulo' => 'adicionar', 'msg' => $msg]);
+		return view('app.produto.adicionar', ['titulo' => 'adicionar', 'msg' => $msg, 'fornecedores' => $fornecedor]);
 	}
 
 	public function editar($id, $msg = '') {
 		$produto = Produto::find($id);
-		return view('app.produto.adicionar', ['titulo' => 'Editar', 'produto' => $produto, 'msg' => $msg]);
+		$fornecedor = DB::table('fornecedores') -> get();
+		return view('app.produto.adicionar', ['titulo' => 'Editar', 'produto' => $produto, 'msg' => $msg, 'fornecedores' => $fornecedor]);
 	}
 
 	public function excluir($id) {

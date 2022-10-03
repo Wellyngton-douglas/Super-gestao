@@ -24,7 +24,7 @@
 						<tr>
 							<th>Nome Produto</th>
 							<th>Descrição</th>
-							{{-- <th>Peso</th> --}}
+							<th>Fornecedor</th>
 							<th>Preço venda</th>
 							<th>Estoque mínimo</th>
 							<th>Estoque máximo</th>
@@ -36,7 +36,7 @@
 							<tr>
 								<td>{{ $produto -> nome}}</td>
 								<td>{{ $produto -> descricao}}</td>
-								{{-- <td>{{ $produto -> peso}}</td> --}}
+								<td>{{ $produto -> nome_fornecedor}}</td>
 								<td>{{ $produto -> preco_venda}}</td>
 								<td>{{ $produto -> estoque_minimo}} Uni.</td>
 								<td>{{ $produto -> estoque_maximo}} Uni.</td>

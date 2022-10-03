@@ -15,7 +15,6 @@
 				<li><a href="{{ route('app.produto') }}">Voltar</a></li>
 			</ul>
 		</div>
-
 		<div class="informação-pagina">
 			<div style="width:30%; margin-left:auto; margin-right:auto;"">
 				{{ isset($msg) && $msg != '' ? $msg : ''}}
@@ -37,6 +36,12 @@
           <input name="estoque_maximo" value="{{ $produto -> estoque_maximo ?? old('estoque_maximo') }}" type="text" placeholder="Estoque Máximo" class="borda-preta">
 					{{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
 					<br>
+					<select name="fornecedor_id" class="borda-preta">
+						<option value="">Selecione o Fornecedor do Produto</option>
+						@foreach ($fornecedores as $key => $fornecedor)
+							<option value="{{ $fornecedor -> id }}" {{ $produto -> fornecedor_id ?? old('fornecedor_id') == $fornecedor -> id ? 'selected' : '' }}>{{ $fornecedor -> nome}}</option>
+						@endforeach
+					</select>
 					<button type="submit" class="borda-preta">ADICIONAR</button>
 				</form>			
 			</div>
