@@ -28,9 +28,6 @@
 					<input name="descricao" value="{{ $produto -> descricao ?? old('descricao') }}" type="text" placeholder="Descrição" class="borda-preta">
 					{{ $errors->has('descricao') ? $errors->first('descricao') : '' }}
 					<br>
-          <input name="peso" value="{{ $produto -> peso ?? old('peso') }}" type="text" placeholder="Peso" class="borda-preta">
-					{{ $errors->has('peso') ? $errors->first('peso') : '' }}
-					<br>
           <input name="preco_venda" value="{{ $produto -> preco_venda ?? old('preco_venda') }}" type="text" placeholder="Preço Venda" class="borda-preta" onkeyup="substituir(this);">
 					{{ $errors->has('preco_venda') ? $errors->first('preco_venda') : '' }}
 					<br>
@@ -40,12 +37,6 @@
           <input name="estoque_maximo" value="{{ $produto -> estoque_maximo ?? old('estoque_maximo') }}" type="text" placeholder="Estoque Máximo" class="borda-preta">
 					{{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
 					<br>
-					{{-- <select name="unidade_id" class="borda-preta">
-						<option value="">Unidade de Medida do Produto</option>
-						@foreach ($unidades as $key => $unidade)
-							<option value="{{ $unidade -> id }}" {{ $produto -> unidade_id ?? old('unidade_id') == $unidade -> id ? 'selected' : '' }}>{{ $unidade -> unidade}}</option>
-						@endforeach
-					</select> --}}
 					<button type="submit" class="borda-preta">ADICIONAR</button>
 				</form>			
 			</div>

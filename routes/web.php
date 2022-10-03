@@ -60,7 +60,14 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::get('/produto/editar/{id}/{msg?}', [ProdutoController::class, 'editar']) -> name('app.produto.editar');
   Route::get('/produto/excluir/{id}', [ProdutoController::class, 'excluir']) -> name('app.produto.excluir');
 
+  Route::get('/produto/detalhe/adicionar/{id_produto?}', [ProdutoDetalheController::class, 'adicionar']) -> name('app.produto_detalhe.adicionar');
+  Route::post('/produto/detalhe/adicionar', [ProdutoDetalheController::class, 'adicionar']) -> name('app.produto_detalhe.adicionar');
+  
   Route::get('/produto/detalhe/listar/{id}', [ProdutoDetalheController::class, 'listar']) -> name('app.produto_detalhe');
+  
+  Route::get('/produto/detalhe/editar/{id}/{id_produto}/{msg?}', [ProdutoDetalheController::class, 'editar']) -> name('app.produto_detalhe.editar');
+  Route::get('/produto/detalhe/excluir/{id}', [ProdutoDetalheController::class, 'excluir']) -> name('app.produto_detalhe.excluir');
+
 
   Route::get('/produto/unidade/listar', [UnidadeController::class, 'listar']) -> name('app.unidade.listar');
   

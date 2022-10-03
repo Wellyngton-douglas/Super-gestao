@@ -10,8 +10,8 @@
 
 		<div class="menu">
 			<ul>
-				<li><a href="{{ route('app.produto.adicionar') }}">Novo</a></li>
-				<li><a href="{{ route('app.produto') }}">Consultar</a></li>
+				<li><a href="{{ route('app.produto_detalhe.adicionar', ['id_produto' => $produtos[0] -> produto_id]) }}">Novo</a></li>
+				<li><a href="{{ route('app.produto.listar') }}">Voltar</a></li>
 			</ul>
 		</div>
 		<div>
@@ -22,13 +22,11 @@
 				<table class="table table-bordered data-table">
 					<thead>
 						<tr>
-							<th>Nome Produto</th>
+							<th>Produto</th>
 							<th>Comprimento</th>
-							{{-- <th>Peso</th> --}}
 							<th>Largura</th>
 							<th>Altura</th>
 							<th>Peso</th>
-							{{-- <th>Unidade</th> --}}
 						</tr>
 					</thead>
 					<tbody>
@@ -37,14 +35,11 @@
                 <td>{{ $produto -> nome}}</td>
 								<td>{{ $produto -> comprimento}}</td>
 								<td>{{ $produto -> largura}}</td>
-								{{-- <td>{{ $produto -> peso}}</td> --}}
 								<td>{{ $produto -> altura}}</td>
 								<td>{{ $produto -> peso}}</td>
-								{{-- <td>{{ $produto -> estoque_maximo}} Uni.</td> --}}
-								{{-- <td>{{ $produto -> unidade}}</td> --}}
-								{{-- <td><a href="{{ route('app.produto_detalhe', $produto -> id) }}">Detalhes</a></td>
-								<td><a href="{{ route('app.produto.excluir', $produto -> id) }}">Excluir</a></td>
-								<td><a href="{{ route('app.produto.editar', $produto -> id) }}">Editar</a></td> --}}
+								{{-- <td><a href="{{ route('app.produto_detalhe', $produto -> id) }}">Detalhes</a></td>--}}
+								<td><a href="{{ route('app.produto_detalhe.excluir', $produto -> id) }}">Excluir</a></td> 
+								<td><a href="{{ route('app.produto_detalhe.editar', ['id' => $produto -> id, 'id_produto' => $produto -> produto_id] ) }}">Editar</a></td>
 							</tr>
 						@endforeach
 					</tbody>

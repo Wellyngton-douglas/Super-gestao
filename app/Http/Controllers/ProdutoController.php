@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Unidade;
 use App\Models\Produto;
 use Illuminate\Support\Facades\DB;
 
@@ -26,8 +25,7 @@ class ProdutoController extends Controller
 			$regras = [
 				'nome' => 'required|min:3|max:100|unique:produtos',
 				'descricao' => 'required',
-				'preco_venda' => 'required',
-				'unidade_id' => 'required'
+				'preco_venda' => 'required'
 			];
 
 			$feedback = [
@@ -38,7 +36,6 @@ class ProdutoController extends Controller
 			];
 
 			$request -> validate($regras, $feedback);
-			$valor = $request -> input('preco_venda');
 			Produto::create($request -> all());
 			$msg = 'Produto cadastrado corretamente';
 		} elseif ($request -> input('_token') != '' && $request -> input('id') != '') {
@@ -58,8 +55,7 @@ class ProdutoController extends Controller
 
 	public function editar($id, $msg = '') {
 		$produto = Produto::find($id);
-		$unidade = Unidade::all();
-		return view('app.produto.adicionar', ['titulo' => 'Editar', 'unidades' => $unidade, 'produto' => $produto, 'msg' => $msg]);
+		return view('app.produto.adicionar', ['titulo' => 'Editar', 'produto' => $produto, 'msg' => $msg]);
 	}
 
 	public function excluir($id) {
