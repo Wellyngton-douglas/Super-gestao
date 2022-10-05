@@ -36,8 +36,7 @@ Route::post('/login', [LoginController::class, 'autenticar']) -> name('site.logi
 Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> group(function() {
   Route::get('/home', [HomeController::class, 'index']) -> name('app.home');
   Route::get('/sair', [LoginController::class, 'sair']) -> name('app.sair');
-  Route::get('/cliente', [ClienteController::class, 'index']) -> name('app.cliente');
-  
+
   //fornecedor
   Route::get('/fornecedor', [FornecedorController::class, 'index']) -> name('app.fornecedor');
   Route::get('/fornecedor/listar', [FornecedorController::class, 'listar']) -> name('app.fornecedor.listar');
@@ -68,6 +67,11 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::post('/produto/unidade/adicionar', [UnidadeController::class, 'adicionar']) -> name('app.unidade.adicionar');
   Route::get('/produto/unidade/editar/{id}/{msg?}', [UnidadeController::class, 'editar']) -> name('app.unidade.editar');
   Route::get('/produto/unidade/excluir{id}', [UnidadeController::class, 'excluir']) -> name('app.unidade.excluir');
+
+  //clientes
+  Route::get('/cliente', [ClienteController::class, 'index']) -> name('app.cliente');
+  Route::get('/cliente/cadastrar', [ClienteController::class, 'adicionar']) -> name('app.cliente.adicionar');
+
 });
 
 Route::fallback(function() {
