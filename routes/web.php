@@ -71,6 +71,10 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   //clientes
   Route::get('/cliente', [ClienteController::class, 'index']) -> name('app.cliente');
   Route::get('/cliente/cadastrar', [ClienteController::class, 'adicionar']) -> name('app.cliente.adicionar');
+  Route::post('/cliente/cadastrar', [ClienteController::class, 'adicionar']) -> name('app.cliente.adicionar');
+  Route::get('/cliente/listar', [ClienteController::class, 'listar']) -> name('app.cliente.listar');
+  Route::get('/cliente/editar/{id}/{msg?}', [ClienteController::class, 'editar']) -> name('app.cliente.editar');
+  Route::get('/cliente/excluir{id}', [ClienteController::class, 'excluir']) -> name('app.cliente.excluir');
 
 });
 

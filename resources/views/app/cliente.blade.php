@@ -9,7 +9,7 @@
 				<h1>Produtos</h1>
 				<p>Cadastrar e listar os clientes</p>
 				<button onclick="window.location.href='{{route('app.cliente.adicionar')}}'">Cadastrar</button>
-				<button onclick="window.location.href='{{route('app.produto.listar')}}'">Listar</button>
+				<button onclick="window.location.href='{{route('app.cliente.listar')}}'">Listar</button>
 			</div>
 		</div>
 

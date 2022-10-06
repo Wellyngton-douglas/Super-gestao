@@ -11,8 +11,8 @@
 
 		<div class="menu">
 			<ul>
-				<li><a href="{{ route('app.cliente.adicionar') }}">Novo</a></li>
-				<li><a href="{{ route('app.cliente') }}">Consultar</a></li>
+				<li><a href="{{ route('app.cliente.listar') }}">Listar</a></li>
+				<li><a href="{{ route('app.cliente') }}">Voltar</a></li>
 			</ul>
 		</div>
 
