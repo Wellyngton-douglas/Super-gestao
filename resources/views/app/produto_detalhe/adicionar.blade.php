@@ -44,7 +44,7 @@
 					<select name="unidade_id" class="borda-preta">
 						<option value="">Unidade de Medida do Produto</option>
 						@foreach ($unidades as $key => $unidade)
-							<option value="{{ $unidade -> id }}" {{ $produto -> unidade_id ?? old('unidade_id') == $unidade -> id ? 'selected' : '' }}>{{ $unidade -> unidade}}</option>
+							<option value="{{ $unidade -> id }}" {{ ($produto -> unidade_id ?? old('unidade_id')) == $unidade -> id ? 'selected' : '' }}>{{ $unidade -> unidade}}</option>
 						@endforeach
 					</select>
 					<br>

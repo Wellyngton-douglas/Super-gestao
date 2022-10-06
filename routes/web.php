@@ -11,6 +11,7 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\ProdutoDetalheController;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,12 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::get('/cliente/editar/{id}/{msg?}', [ClienteController::class, 'editar']) -> name('app.cliente.editar');
   Route::get('/cliente/excluir{id}', [ClienteController::class, 'excluir']) -> name('app.cliente.excluir');
 
+  //pedidos
+  Route::get('/pedido/listar', [PedidoController::class, 'listar']) -> name('app.pedido.listar');
+  Route::get('/pedido/cadastrar', [PedidoController::class, 'adicionar']) -> name('app.pedido.adicionar');
+  Route::post('/pedido/cadastrar', [PedidoController::class, 'adicionar']) -> name('app.pedido.adicionar');
+  Route::get('/pedido/editar/{id}/{msg?}', [PedidoController::class, 'editar']) -> name('app.pedido.editar');
+  Route::get('/pedido/excluir{id}', [PedidoController::class, 'excluir']) -> name('app.pedido.excluir');
 });
 
 Route::fallback(function() {

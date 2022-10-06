@@ -17,8 +17,8 @@
 			<div class="contato">
 				<h1>Pedidos</h1>
 				<p>Cadastrar e listar os pedidos que foram feitos</p>
-				<button onclick="window.location.href='{{route('app.unidade.adicionar')}}'">Cadastrar</button>
-				<button onclick="window.location.href='{{route('app.unidade.listar')}}'">Listar</button>
+				<button onclick="window.location.href='{{route('app.pedido.adicionar')}}'">Cadastrar</button>
+				<button onclick="window.location.href='{{route('app.pedido.listar')}}'">Listar</button>
 			</div>
 		</div>
 	</div>

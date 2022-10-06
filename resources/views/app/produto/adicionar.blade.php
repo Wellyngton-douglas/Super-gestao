@@ -39,7 +39,7 @@
 					<select name="fornecedor_id" class="borda-preta">
 						<option value="">Selecione o Fornecedor do Produto</option>
 						@foreach ($fornecedores as $key => $fornecedor)
-							<option value="{{ $fornecedor -> id }}" {{ $produto -> fornecedor_id ?? old('fornecedor_id') == $fornecedor -> id ? 'selected' : '' }}>{{ $fornecedor -> nome}}</option>
+							<option value="{{ $fornecedor -> id }}" {{ ($produto -> fornecedor_id ?? old('fornecedor_id')) == $fornecedor -> id ? 'selected' : '' }}>{{ $fornecedor -> nome}}</option>
 						@endforeach
 					</select>
 					<button type="submit" class="borda-preta">ADICIONAR</button>
