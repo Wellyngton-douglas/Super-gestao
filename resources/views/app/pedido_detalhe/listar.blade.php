@@ -6,13 +6,12 @@
 	
   <div class="conteudo-pagina">
 		<div class="titulo-pagina-2">
-			<p>Cliente - @yield('titulo')</p>
+			<p>Detalhes do Pedidos - @yield('titulo')</p>
 		</div>
 
 		<div class="menu">
 			<ul>
-				<li><a href="{{ route('app.cliente.adicionar') }}">Novo</a></li>
-				<li><a href="{{ route('app.cliente') }}">Voltar</a></li>
+				<li><a href="{{ route('app.pedido.listar') }}">Voltar</a></li>
 			</ul>
 		</div>
 		<div>
@@ -23,24 +22,23 @@
 				<table class="table table-bordered data-table">
 					<thead>
 						<tr>
-							<th>Nome</th>
+							<th>Pedido</th>
+							<th>Produto</th>
 							<th></th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($clientes as $cliente)						
+						@foreach ($detalhes as $detalhe)						
 							<tr>
-								<td>{{ $cliente -> nome}}</td>
-								<td><a href="{{ route('app.cliente.excluir', $cliente -> id) }}">Excluir</a></td>
-								<td><a href="{{ route('app.cliente.excluir', $cliente -> id) }}">Excluir</a></td>
-								<td><a href="{{ route('app.cliente.editar', $cliente -> id) }}">Editar</a></td>
+								<td>{{ $detalhe -> pedido_id}}</td>
+								<td>{{ $detalhe -> produto_id}}</td>
 							</tr>
 						@endforeach
 					</tbody>
 				</table>
 				<div class="pagination justify-content-center">
-					{{ $clientes -> links() }}
+					{{ $detalhes -> links() }}
 				</div>
 			</div>
 		</div>

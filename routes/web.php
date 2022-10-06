@@ -12,6 +12,7 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoDetalheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,10 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::post('/pedido/cadastrar', [PedidoController::class, 'adicionar']) -> name('app.pedido.adicionar');
   Route::get('/pedido/editar/{id}/{msg?}', [PedidoController::class, 'editar']) -> name('app.pedido.editar');
   Route::get('/pedido/excluir{id}', [PedidoController::class, 'excluir']) -> name('app.pedido.excluir');
+  
+  //pedido detalhe
+  Route::get('/pedido/detalhe/listar/{id}', [PedidoDetalheController::class, 'listar']) -> name('app.pedido_detalhe.listar');
+  Route::get('/pedido/detalhe/adicionar/{id}', [PedidoDetalheController::class, 'adicionar']) -> name('app.pedido_detalhe.adicionar');
 });
 
 Route::fallback(function() {

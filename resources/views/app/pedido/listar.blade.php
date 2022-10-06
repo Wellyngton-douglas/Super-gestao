@@ -11,7 +11,7 @@
 
 		<div class="menu">
 			<ul>
-				<li><a href="{{ route('app.cliente.adicionar') }}">Novo</a></li>
+				<li><a href="{{ route('app.pedido.adicionar') }}">Novo</a></li>
 				<li><a href="{{ route('app.cliente') }}">Voltar</a></li>
 			</ul>
 		</div>
@@ -27,6 +27,8 @@
 							<th>Cliente</th>
 							<th></th>
 							<th></th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,6 +36,8 @@
 							<tr>
 								<td>{{ $pedido -> id}}</td>
 								<td>{{ $pedido -> nome_cliente}}</td>
+								<td><a href="{{ route('app.pedido_detalhe.adicionar', $pedido -> id) }}">Adicionar Produto</a></td>
+								<td><a href="{{ route('app.pedido_detalhe.listar', $pedido -> id) }}">Detalhes</a></td>
 								<td><a href="{{ route('app.pedido.excluir', $pedido -> id) }}">Excluir</a></td>
 								<td><a href="{{ route('app.pedido.editar', $pedido -> id) }}">Editar</a></td>
 							</tr>
