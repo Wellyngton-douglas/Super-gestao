@@ -86,8 +86,11 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4') -> prefix('app') -> gro
   Route::get('/pedido/excluir{id}', [PedidoController::class, 'excluir']) -> name('app.pedido.excluir');
   
   //pedido detalhe
-  Route::get('/pedido/detalhe/listar/{id}', [PedidoDetalheController::class, 'listar']) -> name('app.pedido_detalhe.listar');
-  Route::get('/pedido/detalhe/adicionar/{id}', [PedidoDetalheController::class, 'adicionar']) -> name('app.pedido_detalhe.adicionar');
+  Route::get('/pedido/detalhe/listar/{id}/{ind_criar?}', [PedidoDetalheController::class, 'listar']) -> name('app.pedido_detalhe.listar');
+  Route::get('/pedido/detalhe/adicionar/{pedido_id?}', [PedidoDetalheController::class, 'adicionar']) -> name('app.pedido_detalhe.adicionar');
+  Route::post('/pedido/detalhe/adicionar', [PedidoDetalheController::class, 'adicionar']) -> name('app.pedido_detalhe.adicionar');
+  Route::get('/pedido/detalhe/editar/{id}/{pedido_id?}/{msg?}', [PedidoDetalheController::class, 'editar']) -> name('app.pedido_detalhe.editar');
+  Route::get('/pedido/detalhe/excluir/{id}/{pedido_id}', [PedidoDetalheController::class, 'excluir']) -> name('app.pedido_detalhe.excluir');
 });
 
 Route::fallback(function() {

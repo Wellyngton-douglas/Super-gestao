@@ -33,6 +33,8 @@
 							<tr>
 								<td>{{ $detalhe -> pedido_id}}</td>
 								<td>{{ $detalhe -> produto_id}}</td>
+								<td><a href="{{ route('app.pedido_detalhe.excluir', ['id' => $detalhe -> id, 'pedido_id' => $detalhe -> pedido_id]) }}">Excluir</a></td>
+								<td><a href="{{ route('app.pedido_detalhe.editar', ['id' => $detalhe -> id, 'pedido_id' => $detalhe -> pedido_id]) }}">Editar</a></td>
 							</tr>
 						@endforeach
 					</tbody>
