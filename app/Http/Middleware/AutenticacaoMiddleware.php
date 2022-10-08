@@ -14,7 +14,7 @@ class AutenticacaoMiddleware
 	 * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
 	 * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
 	 */
-	public function handle($request, Closure $next, $metodo_autenticacao, $perfil, $param3, $param4)
+	public function handle($request, Closure $next, $metodo_autenticacao, $perfil)
 	{
 		session_start();
 		

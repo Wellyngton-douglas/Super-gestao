@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Estado;
 use App\Models\Fornecedor;
+use Illuminate\Support\Facades\DB;
 
 class FornecedorController extends Controller
 {
@@ -77,5 +78,15 @@ class FornecedorController extends Controller
 
 		return redirect() -> route('app.fornecedor');
 
+	}
+
+	public function detalhe($id) {
+		$historico = DB::table('historico_fornecedores')
+			-> join('users', 'users.id', '=', 'historico_fornecedores.user_id')
+			-> where('fornecedor_id', '=', $id)
+			-> select('historico_fornecedores.*', 'users.name')
+			-> orderBy('historico_fornecedores.id', 'desc')
+			-> paginate(1);
+    return view('app.detalhes_fornecedor.detalhe', ['historicos'=>$historico, 'titulo' => 'Detalhes']);
 	}
 }

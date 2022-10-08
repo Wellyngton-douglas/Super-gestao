@@ -31,7 +31,7 @@
 					<select name="estados_id" class="borda-preta">
 						<option value="">Localidade do fornecedor</option>
 						@foreach ($estados as $key => $estado)
-							<option value="{{ $estado -> id }}" {{ $fornecedor -> estados_id ?? old('estados_id') == $estado -> id ? 'selected' : '' }}>{{ $estado -> uf}}</option>
+							<option value="{{ $estado -> id }}" {{ ($fornecedor -> estados_id ?? old('estados_id')) == $estado -> id ? 'selected' : '' }}>{{ $estado -> uf}}</option>
 						@endforeach
 					</select>
 					{{ $errors->has('estados_id') ? $errors->first('estados_id') : '' }}

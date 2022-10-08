@@ -3,15 +3,14 @@
 @section('titulo', $titulo)
 
 @section('conteudo')	
-	
   <div class="conteudo-pagina">
 		<div class="titulo-pagina-2">
-			<p>Detalhes do Pedidos - @yield('titulo')</p>
+			<p>Fornecedor - @yield('titulo')</p>
 		</div>
 
 		<div class="menu">
 			<ul>
-				<li><a href="{{ route('app.pedido.listar') }}">Voltar</a></li>
+				<li><a href="{{ route('app.fornecedor.listar') }}">Voltar</a></li>
 			</ul>
 		</div>
 		<div>
@@ -22,29 +21,28 @@
 				<table class="table table-bordered data-table">
 					<thead>
 						<tr>
-							<th>Pedido</th>
-							<th>Produto</th>
-							<th></th>
-							<th></th>
+							<th>Usúario</th>
+							<th>Data de criação</th>
+							<th>Data de Alteração</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($detalhes as $detalhe)						
+						@foreach ($historicos as $historico)						
 							<tr>
-								<td>{{ $detalhe -> pedido_id}}</td>
-								<td>{{ $detalhe -> nome_produto}}</td>
-								<td><a href="{{ route('app.pedido_detalhe.excluir', ['id' => $detalhe -> id, 'pedido_id' => $detalhe -> pedido_id]) }}">Excluir</a></td>
-								<td><a href="{{ route('app.pedido_detalhe.editar', ['id' => $detalhe -> id, 'pedido_id' => $detalhe -> pedido_id]) }}">Editar</a></td>
+								<td>{{ $historico -> name}}</td>
+								<td>{{ $historico -> created_at}}</td>
+								<td>{{ $historico -> updated_at}}</td>
 							</tr>
 						@endforeach
 					</tbody>
 				</table>
 				<div class="pagination justify-content-center">
-					{{ $detalhes -> links() }}
+					{{ $historicos -> links() }}
 				</div>
 			</div>
 		</div>
 	</div>
+  
 	
 	@include('app.layouts._partials.rodape')
 @endsection

@@ -11,10 +11,12 @@ class PedidoDetalheController extends Controller
 {
 	public function listar($id, $ind_criar = 'N') {
 		$detalhe = DB::table('pedidos_produtos')
-			-> where('pedido_id', '=', $id)
+			-> where('pedidos_produtos.pedido_id', '=', $id)
+			-> join('pedidos', 'pedidos_produtos.pedido_id', '=', 'pedidos.id')
+			-> join('produtos', 'produtos.id', '=', 'pedidos_produtos.produto_id')
+			-> select('pedidos_produtos.*', 'produtos.nome as nome_produto')
 			-> paginate(1);
 		$produto = Produto::all();
-
 		if ($ind_criar == 'N') {
 			return view('app.pedido_detalhe.listar', ['titulo' => 'Listar', 'detalhes' => $detalhe]);
 		} elseif ($ind_criar == 'S') {

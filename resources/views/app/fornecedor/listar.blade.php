@@ -29,6 +29,7 @@
 							<th>E-mail</th>
 							<th></th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,6 +39,7 @@
 								<td>{{ $fornecedor -> site}}</td>
 								<td>{{ $fornecedor -> uf}}</td>
 								<td>{{ $fornecedor -> email}}</td>
+								<td><a href="{{ route('app.fornecedor.detalhe', $fornecedor -> id) }}">Detalhes</a></td>
 								<td><a href="{{ route('app.fornecedor.excluir', $fornecedor -> id) }}">Excluir</a></td>
 								<td><a href="{{ route('app.fornecedor.editar', $fornecedor -> id) }}">Editar</a></td>
 							</tr>
